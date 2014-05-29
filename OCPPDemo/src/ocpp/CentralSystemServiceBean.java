@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.jws.WebService;
 import javax.xml.datatype.DatatypeFactory;
+import javax.xml.ws.BindingType;
 
 import ocpp.central.AuthorizationStatus;
 import ocpp.central.AuthorizeRequest;
@@ -34,7 +35,8 @@ import ocpp.central.StopTransactionRequest;
 import ocpp.central.StopTransactionResponse;
 
 @Stateless
-@WebService(name = "CentralSystemService")
+@WebService(serviceName = "OCPPDemo", name = "CentralSystemService", targetNamespace = "urn://Ocpp/Cp/2012/06/", endpointInterface = "ocpp.central.CentralSystemService")
+@BindingType(value = javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_BINDING)
 public class CentralSystemServiceBean implements CentralSystemService {
     @Inject
     private DatatypeFactory factory;
@@ -70,6 +72,7 @@ public class CentralSystemServiceBean implements CentralSystemService {
     @Override
     public BootNotificationResponse bootNotification(
             BootNotificationRequest parameters) {
+        System.out.println("parameters: " + parameters);
         BootNotificationResponse response = new BootNotificationResponse();
         response.setCurrentTime(factory.newXMLGregorianCalendar(cal));
         response.setHeartbeatInterval(20);

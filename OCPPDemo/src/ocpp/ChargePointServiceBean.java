@@ -2,6 +2,7 @@ package ocpp;
 
 import javax.ejb.Stateless;
 import javax.jws.WebService;
+import javax.xml.ws.BindingType;
 
 import ocpp.chargepoint.AvailabilityStatus;
 import ocpp.chargepoint.CancelReservationRequest;
@@ -46,7 +47,8 @@ import ocpp.chargepoint.UpdateFirmwareResponse;
 import ocpp.chargepoint.UpdateStatus;
 
 @Stateless
-@WebService(name = "ChargePointService")
+@WebService(serviceName = "OCPPDemo", name = "ChargePointService", targetNamespace = "urn://Ocpp/Cp/2012/06/", endpointInterface = "ocpp.chargepoint.ChargePointService")
+@BindingType(value = javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_BINDING)
 public class ChargePointServiceBean implements ChargePointService {
 
     @Override
