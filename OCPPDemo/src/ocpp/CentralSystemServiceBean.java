@@ -1,3 +1,7 @@
+package ocpp;
+import javax.ejb.Stateless;
+import javax.jws.WebService;
+
 import ocpp.central.AuthorizeRequest;
 import ocpp.central.AuthorizeResponse;
 import ocpp.central.BootNotificationRequest;
@@ -20,8 +24,9 @@ import ocpp.central.StatusNotificationResponse;
 import ocpp.central.StopTransactionRequest;
 import ocpp.central.StopTransactionResponse;
 
-
-public class CentralSystemServiceImpl implements CentralSystemService {
+@Stateless
+@WebService(name = "CentralSystemService")
+public class CentralSystemServiceBean implements CentralSystemService {
 
 	@Override
 	public DataTransferResponse dataTransfer(DataTransferRequest parameters) {
