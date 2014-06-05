@@ -1,6 +1,7 @@
 package ocpp.cdi;
 
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 import javax.enterprise.inject.Produces;
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -13,6 +14,11 @@ import javax.xml.datatype.DatatypeFactory;
  */
 public class InstanceProvider {
 
+    /**
+     * Returns new XML data type factory instances
+     * 
+     * @return a new XML data type factory
+     */
     @Produces
     public static DatatypeFactory newDatatypeFactory() {
         try {
@@ -22,8 +28,13 @@ public class InstanceProvider {
         }
     }
     
+    /**
+     * Returns a calendar instance for GMT time zone.
+     * 
+     * @return gregorian calendar instance for GMT time zone
+     */
     @Produces
     public static GregorianCalendar newGregorianCalendar() {
-        return (GregorianCalendar)GregorianCalendar.getInstance();
+        return (GregorianCalendar)GregorianCalendar.getInstance(TimeZone.getTimeZone("GMT"));
     }
 }
