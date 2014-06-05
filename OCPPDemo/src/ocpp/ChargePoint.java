@@ -47,9 +47,9 @@ import ocpp.chargepoint.UpdateFirmwareResponse;
 import ocpp.chargepoint.UpdateStatus;
 
 @Stateless
-@WebService(serviceName = "OCPPDemo", name = "ChargePointService", targetNamespace = "urn://Ocpp/Cp/2012/06/", endpointInterface = "ocpp.chargepoint.ChargePointService")
+@WebService(targetNamespace = "urn://Ocpp/Cp/2012/06/", endpointInterface = "ocpp.chargepoint.ChargePointService")
 @BindingType(value = javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_BINDING)
-public class ChargePointServiceBean implements ChargePointService {
+public class ChargePoint implements ChargePointService {
 
     @Override
     public UpdateFirmwareResponse updateFirmware(

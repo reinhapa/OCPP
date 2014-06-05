@@ -1,6 +1,7 @@
 package ocpp;
 
 import java.util.GregorianCalendar;
+import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -35,9 +36,9 @@ import ocpp.central.StopTransactionRequest;
 import ocpp.central.StopTransactionResponse;
 
 @Stateless
-@WebService(serviceName = "OCPPDemo", name = "CentralSystemService", targetNamespace = "urn://Ocpp/Cp/2012/06/", endpointInterface = "ocpp.central.CentralSystemService")
+@WebService(targetNamespace = "urn://Ocpp/Cp/2012/06/", endpointInterface = "ocpp.central.CentralSystemService")
 @BindingType(value = javax.xml.ws.soap.SOAPBinding.SOAP12HTTP_BINDING)
-public class CentralSystemServiceBean implements CentralSystemService {
+public class CentralSystem implements CentralSystemService {
     @Inject
     private DatatypeFactory factory;
     @Inject
@@ -72,7 +73,6 @@ public class CentralSystemServiceBean implements CentralSystemService {
     @Override
     public BootNotificationResponse bootNotification(
             BootNotificationRequest parameters) {
-        System.out.println("parameters: " + parameters);
         BootNotificationResponse response = new BootNotificationResponse();
         response.setCurrentTime(factory.newXMLGregorianCalendar(cal));
         response.setHeartbeatInterval(20);
