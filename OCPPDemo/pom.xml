@@ -34,15 +34,23 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
-            <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <version>1.0.1.Final</version>
-                <configuration>
-				    <username>USERNAME</username>
-				    <password>PASSWORD</password>
-                </configuration>
-            </plugin>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.0.2.Final</version>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<username>USERNAME</username>
+					<password>PASSWORD</password>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
