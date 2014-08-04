@@ -42,13 +42,14 @@
 					<execution>
 						<phase>install</phase>
 						<goals>
-							<goal>deploy</goal>
+							<goal>redeploy</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<username>USERNAME</username>
-					<password>PASSWORD</password>
+					<username>admin</username>
+					<password>password</password>
+					
 				</configuration>
 			</plugin>
 		</plugins>
